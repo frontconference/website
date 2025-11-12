@@ -61,7 +61,7 @@ const workshops = data.workshops?.items.filter(notEmpty) || [];
 						title={workshop.title}
 						text={workshop.lead}
 						link={workshop.slug}
-						meta={[formatDate(workshop.from), workshop.teacher.name]}
+						meta={[workshop.from ? formatDate(workshop.from) : "TBA", workshop.teacher.name]}
 						titleTag="h2"
 					/>
 				</li>

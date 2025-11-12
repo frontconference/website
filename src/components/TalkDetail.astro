@@ -59,7 +59,7 @@ const additionalSpeakers = talk.speakersCollection?.items
 			{
 				talk.fromTime && (
 					<div>
-						{talk.fromTime} - {talk.toTime}
+						{talk.fromTime}{talk.toTime ? ` - ${talk.toTime}` : ""}
 					</div>
 				)
 			}

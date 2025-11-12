@@ -72,11 +72,11 @@ if (!workshop) {
 const talk = {
 	title: workshop.title,
 	date: workshop.from,
-	fromTime: formatTime(String(workshop.from)),
-	toTime: formatTime(String(workshop.to)),
+	fromTime: workshop.from ? formatTime(String(workshop.from)) : "TBA",
+	toTime: workshop.to ? formatTime(String(workshop.to)) : null,
 	abstract: workshop.body,
 	tagsCollection: null,
-	room: "hosted by Unic",
+	// room: "hosted by Unic",
 };
 ---
 
