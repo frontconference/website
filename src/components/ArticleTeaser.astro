@@ -16,7 +16,7 @@ const {
 	link,
 	meta,
 	class: className,
-	slug = Astro.url.pathname,
+	slug = Astro.url.pathname.replace(/\/$/, ""),
 	titleTag = "h3",
 	...rest
 } = Astro.props;
