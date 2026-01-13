@@ -65,7 +65,7 @@ const scheduleMap = schedule.reduce((acc, talk) => {
 			acc[day].slots[talk.fromTime] = {
 				sort: fromTimeSort,
 				title: talk.fromTime,
-				room: !hasSpeaker && talk.room,
+				room: talk.room,
 				talks: [],
 			};
 		}
@@ -96,8 +96,8 @@ const sortedSchedule = Object.keys(scheduleMap)
 
 <div>
 	<ul class="legend" role="presentation">
-		<li class="legend-item var--purple">Lower floor</li>
-		<li class="legend-item var--green">Upper floor</li>
+		<li class="legend-item var--purple">Folium (lower floor)</li>
+		<li class="legend-item var--green">Papiersaal (upper floor)</li>
 	</ul>
 	{
 		sortedSchedule.map((day) => (
@@ -108,7 +108,6 @@ const sortedSchedule = Object.keys(scheduleMap)
 						<div>
 							<h3 class="meta">
 								<span>{slot.title}</span>
-								<span>{slot.room}</span>
 							</h3>
 							<ul class="list">
 								{slot.talks.map((talk) =>
@@ -122,10 +121,13 @@ const sortedSchedule = Object.keys(scheduleMap)
 											}}
 											href={`/speakers/${talk.speaker.slug}`}
 											variant={talk.room === "Folium" ? "purple" : "green"}
+											room={talk.room}
 										/>
 									) : (
-										<h3 class="typo-h4">{talk.title}</h3>
-									),
+										<li>
+											<h4 class="typo-h4">{talk.title}</h4>
+										</li>
+									)
 								)}
 							</ul>
 						</div>
@@ -175,6 +177,7 @@ const sortedSchedule = Object.keys(scheduleMap)
 
 			&.var--green:before {
 				--_mark-color: var(--color-green-100);
+				background: var(--_mark-color);
 			}
 		}
 	}

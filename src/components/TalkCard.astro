@@ -5,9 +5,10 @@ export interface Props {
 	image: { src: string; alt: string };
 	href: string;
 	variant?: "green" | "purple";
+	room?: string;
 }
 
-const { name, title, image, href, variant } = Astro.props;
+const { name, title, image, href, variant, room } = Astro.props;
 ---
 
 <li>
@@ -16,8 +17,9 @@ const { name, title, image, href, variant } = Astro.props;
 			<img src={image.src} alt={image.alt} />
 		</div>
 		<div class="content">
-			<h3 class="name">{name}</h3>
-			<h4 class="title">{title}</h4>
+			<h4 class="name">{name}</h4>
+			<p class="title">{title}</p>
+			<p class="visually-hidden">Room: {room}</p>
 		</div>
 	</a>
 </li>
@@ -91,11 +93,12 @@ const { name, title, image, href, variant } = Astro.props;
 			}
 		}
 
-		&.var--green {
+		&.var--green:before {
 			--_mark-color: var(--color-green-100);
+			background: var(--_mark-color);
 		}
 
-		&.var--purple {
+		&.var--purple:before {
 			--_mark-color: var(--color-purple-100);
 		}
 	}
