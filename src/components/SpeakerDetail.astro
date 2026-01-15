@@ -78,6 +78,11 @@ const getSocials = (speaker) => {
 		<div>
 			<h3 class="speakerDetail__name">{speaker.name}</h3>
 			{speaker.role ? <p class="speakerDetail__role">{speaker.role}</p> : null}
+			{
+				speaker.company ? (
+					<p class="speakerDetail__company">{speaker.company}</p>
+				) : null
+			}
 		</div>
 		{
 			speaker.bio ? (
@@ -135,6 +140,11 @@ const getSocials = (speaker) => {
 					color: var(--color-green-100);
 				}
 			}
+		}
+
+		&__company {
+			color: var(--color-gray-400);
+			margin-block-start: var(--spacing-3x);
 		}
 
 		&__socials {
